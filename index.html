@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprite Cutter</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://unpkg.com/binary-bmp@2.0.5/dist/index.umd.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card" style="padding: 20px; border: 2px solid #ddd; border-radius: 8px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <h1>Sprite Cutter</h1>
+        </div>
+        
+        <div class="card upload-section" id="uploadSection">
+            <h3>Upload Sprite Sheet</h3>
+            <p>Drag and drop your sprite sheet image here, or click to select</p>
+            <div class="file-input">
+                <input type="file" id="spriteSheet" accept="image/*">
+                <button id="chooseFileBtn" class="btn">Choose File</button>
+            </div>
+        </div>
+        
+        <div class="settings-container">
+            <div class="card settings-panel">
+                <h3>Settings</h3>
+                <div class="setting-group">
+                    <label>Sprite Width:</label>
+                    <input id="spriteWidth" type="number" value="34" class="input">
+                </div>
+                <div class="setting-group">
+                    <label>Sprite Height:</label>
+                    <input id="spriteHeight" type="number" value="77" class="input">
+                </div>
+                <div class="setting-group">
+                    <label>Start X:</label>
+                    <input id="startX" type="number" value="1" class="input">
+                </div>
+                <div class="setting-group">
+                    <label>Start Y:</label>
+                    <input id="startY" type="number" value="1" class="input">
+                </div>
+                <div class="setting-group">
+                    <label>Gap X:</label>
+                    <input id="gapX" type="number" value="1" class="input">
+                </div>
+                <div class="setting-group">
+                    <label>Gap Y:</label>
+                    <input id="gapY" type="number" value="1" class="input">
+                </div>
+                <div class="setting-group">
+                    <label>Rows:</label>
+                    <input id="rows" type="number" value="4" class="input">
+                </div>
+                <div class="setting-group">
+                    <label>Columns:</label>
+                    <input id="cols" type="number" value="6" class="input">
+                </div>
+            </div>
+            
+            <div class="card content-panel">
+                <div id="previewSection" class="hidden">
+                    <h3>Image Preview</h3>
+                    <img id="previewImage" class="preview-image" alt="Preview">
+                </div>
+                
+                <div id="spritesSection" class="hidden">
+                    <h3>Extracted Sprites</h3>
+                    <div id="spritesGrid" class="sprites-grid"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button id="sliceBtn" class="btn" disabled>Slice Sprites</button>
+            <button id="downloadZipBtn" class="btn" disabled>Download ZIP (PNG)</button>
+            <button id="downloadBmpZipBtn" class="btn" disabled>Download ZIP (BMP 24-bit)</button>
+        </div>
+        
+        <div class="progress-bar hidden" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div class="status-message" id="statusMessage"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
