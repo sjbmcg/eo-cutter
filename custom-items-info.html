@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Items - EO Client Guide</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card" style="padding: 20px; border: 2px solid #ddd; border-radius: 8px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <h1>Adding Custom Items to EO Client</h1>
+            <nav style="margin-top: 15px;">
+                <a href="index.html" style="color: #007bff; text-decoration: none; margin-right: 15px;">← Back to Sprite Cutter</a>
+            </nav>
+        </div>
+        
+        <div class="card">
+            <h2>Quick Steps</h2>
+            
+            <h3>1. Resource Hacker - Add Icons</h3>
+            <ol>
+                <li>Open Resource Hacker
+                    <br><img src="images/resource-hacker-open.png" alt="Resource Hacker interface" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Open <code>gfx023.egf</code> (select "All Files" to see it)
+                    <br><img src="images/select-all-files.png" alt="Select all files dialog" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Scroll to bottom, find last numbers (e.g., 1047, 1048)
+                    <br><img src="images/sprite-numbers.png" alt="Sprite numbers at bottom" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Actions > Add (Ctrl+M), add your BMPs as next numbers (1049, 1050)
+                    <br><img src="images/add-sprites.png" alt="Adding sprites dialog" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Save</li>
+            </ol>
+            
+            <h3>2. Resource Hacker - Add Armor Graphics</h3>
+            <ol>
+                <li>Open armor GFX file (e.g., <code>gfx0014.egf</code> for female armor)
+                    <br><img src="images/armor-gfx-file.png" alt="Opening armor GFX file" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Calculate position: If last sprite ends at 2622, add 29 gap = start at 2651, end 2672
+                    <br><img src="images/armor-sprite-calculation.png" alt="Armor sprite numbering" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Add 22 armor sprites in that range
+                    <br><img src="images/add-armor-sprites.png" alt="Adding armor sprites" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Save</li>
+            </ol>
+            
+            <h3>3. PubEditor Configuration</h3>
+            <ol>
+                <li>Open PubEditor, press plus icon
+                    <br><img src="images/pubeditor-plus-icon.png" alt="PubEditor plus icon" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Name your item
+                    <br><img src="images/pubeditor-name-item.png" alt="Naming your item" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Click "Last" (inventory graphic displays)
+                    <br><img src="images/pubeditor-click-last.png" alt="Click Last button" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Change item type from "General" to "Armour"
+                    <br><img src="images/pubeditor-change-type.png" alt="Change type to Armour" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Look to your right, select Armour Resource ID, scroll down to find associated animation graphic
+                    <br><img src="images/pubeditor-armor-resource-animation.png" alt="Select armor resource and find animation graphic" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Set GRD size = 2by3, graphics IDs (1049, 1050)
+                    <br><img src="images/pubeditor-grd-graphics.png" alt="Setting GRD size and graphics IDs" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Alter weights etc if you want
+                    <br><img src="images/pubeditor-weights.png" alt="Setting weights and stats" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Press "Create"
+                    <br><img src="images/pubeditor-create.png" alt="Press Create button" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li><strong>Add EOF entry at end (empty item)</strong>
+                    <br><img src="images/pubeditor-eof-entry.png" alt="Adding EOF entry" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>Save</li>
+            </ol>
+            
+            <h3>4. Deploy to Server</h3>
+            <ol>
+                <li>Move your updated files into your server emulator (e.g., REOSERV)
+                    <br><img src="images/server-file-deployment.png" alt="Moving files to server" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+                <li>To spawn your item, use the index number (e.g., 484) with admin command: <code>$si 484</code>
+                  
+                </li>
+                <li>Your custom item now works in-game!
+                    <br><img src="images/ingame-custom-item.png" alt="Custom item working in-game" style="max-width: 400px; margin: 10px 0; border: 1px solid #ddd;">
+                </li>
+            </ol>
+        </div>
+        
+        <div class="card">
+            <h2>Key Points</h2>
+            <ul>
+                <li><strong>Icons:</strong> Drop (odd number), Inventory (even number)</li>
+                <li><strong>Armor gap:</strong> Always 29 sprites between sets</li>
+                <li><strong>GRD size:</strong> 2by3 for armor items</li>
+                <li><strong>EOF required:</strong> Always add empty item at end</li>
+                <li><strong>Format:</strong> BMP 24-bit</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>Troubleshooting</h2>
+            <ul>
+                <li><strong>Can't see EGF:</strong> Select "All Files" in Resource Hacker</li>
+                <li><strong>Wrong sprite:</strong> Check sprite IDs match between Resource Hacker and PubEditor</li>
+                <li><strong>Client crash:</strong> Missing EOF entry or corrupt BMP</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
